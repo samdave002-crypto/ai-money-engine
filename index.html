@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Money Engine</title>
+<meta name="theme-color" content="#0b1220">
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:#0b1220;color:#eef2ff}
+header{padding:22px 18px;border-bottom:1px solid #26324a;background:#111a2d}
+h1{margin:0;font-size:28px}.sub{color:#a9b4c8;margin-top:5px}
+main{max-width:1050px;margin:auto;padding:18px}.status{display:flex;gap:10px;align-items:center;background:#101a2e;border:1px solid #26324a;border-radius:14px;padding:13px;margin-bottom:16px}
+.dot{width:10px;height:10px;border-radius:50%;background:#8b95a7}.online .dot{background:#22c55e}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.card{background:#111a2d;border:1px solid #26324a;border-radius:16px;padding:18px}.label{color:#a9b4c8;font-size:14px}.value{font-size:28px;font-weight:750;margin-top:7px}
+.panel{margin-top:16px;background:#111a2d;border:1px solid #26324a;border-radius:16px;padding:18px}
+button{border:0;border-radius:10px;padding:11px 15px;background:#2563eb;color:white;font-weight:700;margin-right:8px}
+button.secondary{background:#26324a}.muted{color:#a9b4c8}code{background:#0a1020;padding:3px 6px;border-radius:6px}
+</style>
+</head>
+<body>
+<header><h1>AI Money Engine</h1><div class="sub">Cloud business growth • leads • revenue • Sammy AI Trading</div></header>
+<main>
+<div id="status" class="status"><span class="dot"></span><span><b id="statusText">Checking connection…</b><br><span class="muted" id="statusDetail">Internet/cloud readiness</span></span></div>
+<div class="grid">
+<div class="card"><div class="label">Opportunities</div><div class="value" id="opps">0</div></div>
+<div class="card"><div class="label">Leads</div><div class="value" id="leads">0</div></div>
+<div class="card"><div class="label">Visitors</div><div class="value" id="visitors">0</div></div>
+<div class="card"><div class="label">Confirmed earnings</div><div class="value">₦0</div></div>
+</div>
+<div class="panel">
+<h2>Cloud dashboard</h2>
+<p class="muted">This page is designed to be deployed to an HTTPS website. It does not invent traffic, leads, earnings, or trading results.</p>
+<button onclick="check()">Check connection</button>
+<button class="secondary" onclick="alert('Trading is OFF until an authorized broker/exchange connection and risk controls are configured.')">Sammy AI Trading</button>
+<p id="result" class="muted"></p>
+</div>
+<div class="panel">
+<h2>Next cloud integrations</h2>
+<p>Database: <code>Supabase</code> • Hosting: <code>Vercel</code> • Payments: authorized provider/webhooks • Trading: authorized broker/exchange connection</p>
+</div>
+</main>
+<script>
+async function check(){
+ const s=document.getElementById('status'),t=document.getElementById('statusText'),d=document.getElementById('statusDetail'),r=document.getElementById('result');
+ if(!navigator.onLine){s.classList.remove('online');t.textContent='Internet unavailable';d.textContent='Reconnect to the Internet and try again.';return}
+ s.classList.add('online');t.textContent='Internet connection available';d.textContent='The app is running from an HTTPS-capable web deployment.';
+ r.textContent='Checked: '+new Date().toLocaleString();
+}
+window.addEventListener('online',check);window.addEventListener('offline',check);check();
+</script>
+</body>
+</html>
